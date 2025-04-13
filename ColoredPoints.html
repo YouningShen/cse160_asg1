@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- <head>
+    <meta charset="utf-8" />
+    <title>Change a point color</title>
+  </head> -->
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Pattle</title>
+  
+    <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">  
+
+    <style>
+      body {
+        background-image: url("lib/background.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #543829;
+        font-family: 'Schoolbell', sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+
+      button {
+        background: #9a715c;
+        color: #ffddcc;
+        border: 2px solid #9a715c;
+        border-radius: 12px;
+        padding: 10px 16px;
+        margin: 6px;
+        font-size: 12px;
+        font-family: 'Schoolbell', sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      canvas {
+        border: 5px solid #9a715c;
+        border-radius: 8px;
+      }
+
+      button:hover {
+        background: #ffddcc;
+        color: #9a715c;
+      }
+
+      input[type=range] {
+        -webkit-appearance: none;
+        height: 8px;
+        background: #4d2600;
+        border-radius: 5px;
+        width: 250px;
+        margin-top: 6px;
+      }
+
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #9a715c;
+        border: #9a715c;
+        cursor: pointer;
+      }
+
+      p {
+        font-size: 14px;
+        margin: 10px 0;
+      }
+
+      #referenceImage {
+        position: absolute;
+        top: 30px;
+        right: 20px;
+        height: 100px;
+        border: 5px solid #9a715c;
+        border-radius: 8px;
+        z-index: 10;
+      }
+
+      #scrollToBottomBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #ffddcc;
+        color: #9a715c;
+        border: none;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: all 0.2s ease;
+        z-index: 100;
+      }
+
+      #scrollToBottomBtn:hover {
+        background-color: #9a715c;
+        color: #ffddcc;
+      }
+
+    </style>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+
+    <img id="referenceImage" src="lib/draw.png" alt="Reference Drawing">
+    <p>
+
+    <!-- <p id="numdot"> XXX </p> -->
+    <button id="scrollToBottomBtn" title="Go to bottom">↓</button>
+    
+    <button type="button" id="green">Green</button>
+    <button type="button" id="red">Red</button>
+    <button type="button" id="pointButton">Point</button>
+    <button type="button" id="triButton">Triangle</button>
+    <button type="button" id="circleButton">Circle</button>
+    <button type="button" id="brushButton">Crayon</button>
+
+    <p>
+    Red <input type="range" min="0" max="100" value="100" class="slider" id="redSlide">
+    <p>
+    Green <input type="range" min="0" max="100" value="0" class="slider" id="greenSlide">
+    <p>
+    Blue <input type="range" min="0" max="100" value="0" class="slider" id="blueSlide">
+    <p>
+    Size <input type="range" min="5" max="40" value="5" class="slider" id="sizeSlide">
+    <p>
+    Segments <input type="range" min="10" max="100" value="10" class="slider" id="segmentSlide">
+    <p>
+
+    <button type="button" id="clearButton">Clear Canvas</button>
+    <button type="button" id="canvasColor">Canvas Color</button>
+    <button type="button" id="resetColor">Reset Brush Color</button>
+    <button type="button" id="drawPicture">Draw Picture</button>
+
+    <script>
+      document.getElementById('scrollToBottomBtn').onclick = function () {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      };
+    </script>    
+
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="Brush.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Point.js"></script>
+    <script src="ColoredPoints.js"></script>
+  </body>
+</html>
